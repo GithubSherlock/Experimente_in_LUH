@@ -1,3 +1,23 @@
+/* 
+    Note:
+    Der bereitgestellte Code implementiert eine Zustandsmaschine (Finite State Machine, FSM), die die Steuerung einer Verkehrsampel 
+    simuliert. Die FSM verwendet zwei Prozesse, fsm_seq und fsm_comb, um die zeitliche und kombinatorische Logik der Zustandsübergänge 
+    und Aktionen zu verwalten. Die Ampel durchläuft vier Hauptzustände: Z1, Z2, Z3 und Z4, wobei jeder Zustand verschiedene Bedingungen 
+    für das Umschalten und Verhalten der Ampelfarben aufweist. Die Zustände werden basierend auf einem Eingangssignal key_in und einem 
+    internen Zähler counter gesteuert. In jedem Zustand werden die Ausgangssignale für die Ampelfarben (Rot, Gelb, Grün) je nach den 
+    definierten Regeln gesetzt, um den simulierten Ablauf einer Ampelschaltung darzustellen. Der interne Zähler wird verwendet, um die 
+    Dauer jedes Zustands zu verfolgen und die Übergänge zwischen den Zuständen zu steuern. Die Implementierung ermöglicht es, das 
+    Verhalten der Ampel in verschiedenen Zuständen und Übergängen zu steuern und visuell darzustellen.
+
+    The provided code implements a finite state machine (FSM) that simulates the control of a traffic signal. The FSM utilizes two 
+    processes, fsm_seq and fsm_comb, to manage the temporal and combinational logic of state transitions and actions. The traffic light 
+    goes through four main states: Z1, Z2, Z3, and Z4, with each state having different conditions for switching and behavior of the 
+    light colors. The states are controlled based on an input signal key_in and an internal counter counter. In each state, the output 
+    signals for the light colors (Red, Yellow, Green) are set according to the defined rules to simulate the sequence of a traffic light 
+    operation. The internal counter is used to track the duration of each state and control the transitions between states. The 
+    implementation enables controlling and visually representing the behavior of the traffic light in different states and transitions.
+*/
+
 ARCHITECTURE rtl OF Zustanautomaten IS
 signal counter : unsigned(3 downto 0);
 signal counter_next : unsigned(3 downto 0);
@@ -56,6 +76,7 @@ BEGIN
 
             when Z3 =>
             -- Signalzuweisungen in der Triggerphase Z3 (4. second to 7. second)
+            -- Diese Phase ist für Fußgänger zum Überqueren der Straße bestimmt.
             if counter >= 4 and counter < 7 then
                 HS_red <= '0'; HS_yellow <= '1'; HS_green <= '1'; -- HS hold RED in 3 seconds
                 NS_red <= '1'; NS_yellow <= '1'; NS_green <= '0'; -- NS hold GREEN in 3 seconds
