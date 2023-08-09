@@ -10,7 +10,7 @@
 
 --    The provided code implements a finite state machine (FSM) that simulates the control of a traffic signal. The FSM utilizes two 
 --    processes, fsm_seq and fsm_comb, to manage the temporal and combinational logic of state transitions and actions. The traffic light 
---   goes through four main states: Z1, Z2, Z3, and Z4, with each state having different conditions for switching and behavior of the 
+--    goes through four main states: Z1, Z2, Z3, and Z4, with each state having different conditions for switching and behavior of the 
 --    light colors. The states are controlled based on an input signal key_in and an internal counter counter. In each state, the output 
 --    signals for the light colors (Red, Yellow, Green) are set according to the defined rules to simulate the sequence of a traffic light 
 --    operation. The internal counter is used to track the duration of each state and control the transitions between states. The 
